@@ -165,6 +165,13 @@ export function getTextTypingSteps(
 
   for (let i = 0; i < text.length; i++) {
     const char = text[i];
+
+    if (char === "\n") {
+      completedText += char;
+      allSteps.push(completedText);
+      continue;
+    }
+
     const charSteps = getTypingSteps(char);
 
     for (const step of charSteps) {

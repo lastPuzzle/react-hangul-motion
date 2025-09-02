@@ -65,9 +65,18 @@ export const HangulMotion = forwardRef<HangulMotionRef, HangulMotionProps>(
     }, [text]);
 
     const displayContent = React.useMemo(() => {
+      const textWithLineBreaks = motion.displayText
+        .split("\n")
+        .map((line, index, array) => (
+          <React.Fragment key={index}>
+            {line}
+            {index < array.length - 1 && <br />}
+          </React.Fragment>
+        ));
+
       return (
         <>
-          {motion.displayText}
+          {textWithLineBreaks}
           {cursor && (
             <span
               style={{

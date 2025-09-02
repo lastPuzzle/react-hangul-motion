@@ -58,4 +58,35 @@ describe("한글 유틸리티 테스트", () => {
     const 단계들 = getTextTypingSteps("안녕", false);
     expect(단계들).toEqual(["안", "안녕"]);
   });
+
+  test("줄바꿈 문자가 포함된 텍스트 처리", () => {
+    const 단계들 = getTextTypingSteps("안녕\n하세요");
+    expect(단계들).toContain("ㅇ");
+    expect(단계들).toContain("아");
+    expect(단계들).toContain("안");
+    expect(단계들).toContain("안ㄴ");
+    expect(단계들).toContain("안녀");
+    expect(단계들).toContain("안녕");
+    expect(단계들).toContain("안녕\n");
+    expect(단계들).toContain("안녕\nㅎ");
+    expect(단계들).toContain("안녕\n하");
+    expect(단계들).toContain("안녕\n하세요");
+  });
+
+  test("줄바꿈만 있는 텍스트", () => {
+    const 단계들 = getTextTypingSteps("\n");
+    expect(단계들).toEqual(["\n"]);
+  });
+
+  test("여러 줄바꿈이 연속으로 있는 경우", () => {
+    const 단계들 = getTextTypingSteps("안\n\n녕");
+    expect(단계들).toContain("ㅇ");
+    expect(단계들).toContain("아");
+    expect(단계들).toContain("안");
+    expect(단계들).toContain("안\n");
+    expect(단계들).toContain("안\n\n");
+    expect(단계들).toContain("안\n\nㄴ");
+    expect(단계들).toContain("안\n\n녀");
+    expect(단계들).toContain("안\n\n녕");
+  });
 });

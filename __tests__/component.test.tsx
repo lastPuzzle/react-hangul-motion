@@ -37,4 +37,20 @@ describe("한글모션 컴포넌트 테스트", () => {
     const 요소 = container.querySelector("div");
     expect(요소?.tagName).toBe("DIV");
   });
+
+  test("줄바꿈 문자 처리", () => {
+    const { container } = render(
+      <HangulMotion text="첫번째 줄\n두번째 줄" autoStart={false} />
+    );
+    const br요소 = container.querySelector("br");
+    expect(br요소).toBeInTheDocument();
+  });
+
+  test("여러 줄바꿈 처리", () => {
+    const { container } = render(
+      <HangulMotion text="첫째\n둘째\n셋째" autoStart={false} />
+    );
+    const br요소들 = container.querySelectorAll("br");
+    expect(br요소들).toHaveLength(2);
+  });
 });
