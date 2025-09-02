@@ -1,0 +1,46 @@
+# Source files
+src/
+__tests__/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Config files
+tsconfig.json
+rollup.config.js
+jest.config.js
+.eslintrc.js
+
+# Build artifacts
+*.tsbuildinfo
+coverage/
+.nyc_output/
+
+# Development
+node_modules/
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+docs/
+examples/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
