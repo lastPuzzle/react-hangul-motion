@@ -134,8 +134,4 @@ MIT
 ## 🤝 기여
 
 이슈나 PR은 언제나 환영합니다!
-
-- 📂 **저장소**: [https://github.com/lastPuzzle/react-hangul-motion](https://github.com/lastPuzzle/react-hangul-motion)
-- 🐛 **버그 리포트**: [Issues](https://github.com/lastPuzzle/react-hangul-motion/issues)
-- 💡 **기능 제안**: [Issues](https://github.com/lastPuzzle/react-hangul-motion/issues)
-- 🔄 **풀 리퀘스트**: [Pull Requests](https://github.com/lastPuzzle/react-hangul-motion/pulls)
+[https://github.com/lastPuzzle/react-hangul-motion](https://github.com/lastPuzzle/react-hangul-motion)

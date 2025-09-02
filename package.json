@@ -1,6 +1,6 @@
 {
   "name": "react-hangul-motion",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "React 기반 한글 타이핑 애니메이션 라이브러리",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
