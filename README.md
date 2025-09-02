@@ -134,4 +134,5 @@ MIT
 ## 🤝 기여
 
 이슈나 PR은 언제나 환영합니다!
-[https://github.com/lastPuzzle/react-hangul-motion](https://github.com/lastPuzzle/react-hangul-motion)
+
+[![GitHub](https://img.shields.io/badge/GitHub-react--hangul--motion-blue?style=flat&logo=github)](https://github.com/lastPuzzle/react-hangul-motion)
