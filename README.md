@@ -2,6 +2,8 @@
 
 React 기반 한글 타이핑 애니메이션 라이브러리
 
+[![GitHub](https://img.shields.io/badge/GitHub-react--hangul--motion-blue?style=flat&logo=github)](https://github.com/lastPuzzle/react-hangul-motion)
+
 ## ✨ 특징
 
 - 🎯 **한글 조합 과정** - ㅇ → 아 → 안 자연스러운 타이핑 효과
@@ -132,3 +134,8 @@ MIT
 ## 🤝 기여
 
 이슈나 PR은 언제나 환영합니다!
+
+- 📂 **저장소**: [https://github.com/lastPuzzle/react-hangul-motion](https://github.com/lastPuzzle/react-hangul-motion)
+- 🐛 **버그 리포트**: [Issues](https://github.com/lastPuzzle/react-hangul-motion/issues)
+- 💡 **기능 제안**: [Issues](https://github.com/lastPuzzle/react-hangul-motion/issues)
+- 🔄 **풀 리퀘스트**: [Pull Requests](https://github.com/lastPuzzle/react-hangul-motion/pulls)
