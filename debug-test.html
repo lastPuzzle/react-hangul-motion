@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>줄바꿈 테스트</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="module">
+      // ESM 모듈 로드
+      import { HangulMotion } from "./dist/index.esm.js";
+
+      const { createElement, useState } = React;
+      const { createRoot } = ReactDOM;
+
+      function App() {
+        return createElement(
+          "div",
+          null,
+          createElement("h1", null, "줄바꿈 테스트"),
+          createElement(
+            "div",
+            {
+              style: {
+                border: "1px solid #ccc",
+                padding: "10px",
+                margin: "10px",
+              },
+            },
+            createElement("h3", null, "테스트 1: 기본 줄바꿈"),
+            createElement(HangulMotion, {
+              text: "안녕하세요\n반갑습니다",
+              speed: 200,
+            })
+          ),
+          createElement(
+            "div",
+            {
+              style: {
+                border: "1px solid #ccc",
+                padding: "10px",
+                margin: "10px",
+              },
+            },
+            createElement("h3", null, "테스트 2: 여러 줄바꿈"),
+            createElement(HangulMotion, {
+              text: "첫째줄\n둘째줄\n셋째줄",
+              speed: 200,
+            })
+          )
+        );
+      }
+
+      const root = createRoot(document.getElementById("root"));
+      root.render(createElement(App));
+    </script>
+  </body>
+</html>

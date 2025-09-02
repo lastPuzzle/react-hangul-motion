@@ -33,7 +33,8 @@ export function useHangulMotion(
   const isManuallyStoppedRef = useRef(false);
 
   const generateSteps = useCallback(() => {
-    return getTextTypingSteps(text, opts.showComposition);
+    const processedText = text.replace(/\\n/g, "\n");
+    return getTextTypingSteps(processedText, opts.showComposition);
   }, [text, opts.showComposition]);
 
   const stop = useCallback(() => {

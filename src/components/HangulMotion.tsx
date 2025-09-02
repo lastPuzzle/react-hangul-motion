@@ -30,7 +30,10 @@ export const HangulMotion = forwardRef<HangulMotionRef, HangulMotionProps>(
     },
     ref
   ) => {
-    const motion = useHangulMotion(text, {
+    // \\n 문자열을 실제 줄바꿈 문자로 변환
+    const processedText = text.replace(/\\n/g, "\n");
+
+    const motion = useHangulMotion(processedText, {
       cursor,
       cursorBlink,
       cursorChar,
@@ -52,17 +55,17 @@ export const HangulMotion = forwardRef<HangulMotionRef, HangulMotionProps>(
     const hasStartedRef = useRef(false);
 
     useEffect(() => {
-      if (autoStart && text && !hasStartedRef.current) {
+      if (autoStart && processedText && !hasStartedRef.current) {
         hasStartedRef.current = true;
         motion.start();
       }
-    }, [autoStart, text]);
+    }, [autoStart, processedText, motion]);
 
     useEffect(() => {
-      if (text) {
+      if (processedText) {
         hasStartedRef.current = false;
       }
-    }, [text]);
+    }, [processedText]);
 
     const displayContent = React.useMemo(() => {
       const textWithLineBreaks = motion.displayText

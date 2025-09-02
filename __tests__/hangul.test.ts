@@ -89,4 +89,22 @@ describe("한글 유틸리티 테스트", () => {
     expect(단계들).toContain("안\n\n녀");
     expect(단계들).toContain("안\n\n녕");
   });
+
+  test("\\n 문자열을 실제 줄바꿈으로 변환", () => {
+    // 실제 사용 시나리오: 사용자가 "안녕\\n하세요" 문자열을 입력
+    const input = "안녕\\n하세요";
+    const converted = input.replace(/\\n/g, "\n");
+    const 단계들 = getTextTypingSteps(converted);
+
+    expect(단계들).toContain("ㅇ");
+    expect(단계들).toContain("아");
+    expect(단계들).toContain("안");
+    expect(단계들).toContain("안ㄴ");
+    expect(단계들).toContain("안녀");
+    expect(단계들).toContain("안녕");
+    expect(단계들).toContain("안녕\n");
+    expect(단계들).toContain("안녕\nㅎ");
+    expect(단계들).toContain("안녕\n하");
+    expect(단계들).toContain("안녕\n하세요");
+  });
 });
