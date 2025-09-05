@@ -7,6 +7,7 @@ export interface HangulMotionOptions {
   cursorBlink?: boolean;
   cursorChar?: string;
   showComposition?: boolean;
+  skipAnimation?: boolean;
   onStart?: () => void;
   onComplete?: () => void;
   onType?: (char: string, index: number) => void;

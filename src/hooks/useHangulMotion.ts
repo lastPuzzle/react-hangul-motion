@@ -11,6 +11,7 @@ const defaultOptions: Required<HangulMotionOptions> = {
   cursorBlink: true,
   cursorChar: "|",
   showComposition: true,
+  skipAnimation: false,
   onStart: () => {},
   onComplete: () => {},
   onType: () => {},
@@ -34,8 +35,13 @@ export function useHangulMotion(
 
   const generateSteps = useCallback(() => {
     const processedText = text.replace(/\\n/g, "\n");
+
+    if (opts.skipAnimation) {
+      return [processedText];
+    }
+
     return getTextTypingSteps(processedText, opts.showComposition);
-  }, [text, opts.showComposition]);
+  }, [text, opts.showComposition, opts.skipAnimation]);
 
   const stop = useCallback(() => {
     if (timeoutRef.current) {
@@ -98,11 +104,24 @@ export function useHangulMotion(
   );
 
   const start = useCallback(() => {
-    if (state.isTyping) return;
+    if (state.isTyping || state.isComplete) return;
 
     isManuallyStoppedRef.current = false;
     const steps = generateSteps();
     stepsRef.current = steps;
+
+    if (opts.skipAnimation) {
+      setState((prev) => ({
+        ...prev,
+        displayText: steps[0] || "",
+        isTyping: false,
+        isComplete: true,
+        currentIndex: 0,
+      }));
+      opts.onStart();
+      opts.onComplete();
+      return;
+    }
 
     setState((prev) => ({
       ...prev,
@@ -112,12 +131,26 @@ export function useHangulMotion(
 
     opts.onStart();
     typeStep(steps, 0);
-  }, [generateSteps, opts, typeStep]);
+  }, [generateSteps, opts, typeStep, state.isTyping, state.isComplete]);
 
   const restart = useCallback(() => {
     reset();
-    setTimeout(start, 50);
-  }, [reset, start]);
+    setTimeout(() => {
+      // restart는 완료 상태를 무시하고 강제로 다시 시작
+      isManuallyStoppedRef.current = false;
+      const steps = generateSteps();
+      stepsRef.current = steps;
+
+      setState((prev) => ({
+        ...prev,
+        isTyping: true,
+        isComplete: false,
+      }));
+
+      opts.onStart();
+      typeStep(steps, 0);
+    }, 50);
+  }, [reset, generateSteps, opts, typeStep]);
 
   const getState = useCallback(() => state, [state]);
 

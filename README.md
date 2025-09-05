@@ -51,6 +51,7 @@ function App() {
   cursorChar="▋" // 커서 문자
   cursorBlink={true} // 커서 깜빡임
   showComposition={true} // 조합 과정 표시
+  skipAnimation={false} // 애니메이션 없이 바로 표시
   autoStart={true} // 자동 시작
 />
 ```
@@ -81,16 +82,17 @@ function CustomComponent() {
 
 ### HangulMotion Props
 
-| 속성              | 타입      | 기본값 | 설명                |
-| ----------------- | --------- | ------ | ------------------- |
-| `text`            | `string`  | -      | 타이핑할 텍스트     |
-| `speed`           | `number`  | `100`  | 타이핑 속도 (ms)    |
-| `delay`           | `number`  | `0`    | 시작 지연 시간 (ms) |
-| `cursor`          | `boolean` | `true` | 커서 표시 여부      |
-| `cursorChar`      | `string`  | `\|`   | 커서 문자           |
-| `cursorBlink`     | `boolean` | `true` | 커서 깜빡임         |
-| `showComposition` | `boolean` | `true` | 조합 과정 표시      |
-| `autoStart`       | `boolean` | `true` | 자동 시작           |
+| 속성              | 타입      | 기본값  | 설명                      |
+| ----------------- | --------- | ------- | ------------------------- |
+| `text`            | `string`  | -       | 타이핑할 텍스트           |
+| `speed`           | `number`  | `100`   | 타이핑 속도 (ms)          |
+| `delay`           | `number`  | `0`     | 시작 지연 시간 (ms)       |
+| `cursor`          | `boolean` | `true`  | 커서 표시 여부            |
+| `cursorChar`      | `string`  | `\|`    | 커서 문자                 |
+| `cursorBlink`     | `boolean` | `true`  | 커서 깜빡임               |
+| `showComposition` | `boolean` | `true`  | 조합 과정 표시            |
+| `skipAnimation`   | `boolean` | `false` | 애니메이션 없이 바로 표시 |
+| `autoStart`       | `boolean` | `true`  | 자동 시작                 |
 
 ### useHangulMotion 훅
 
@@ -122,6 +124,12 @@ motion.isComplete; // 완료 여부
 
 // 조합 과정 없이
 <HangulMotion text="바로 출력" showComposition={false} />
+
+// 애니메이션 없이 바로 표시
+<HangulMotion text="즉시 표시" skipAnimation={true} />
+
+// 줄바꿈 포함 텍스트
+<HangulMotion text="첫째줄\n둘째줄\n셋째줄" />
 
 // 커스텀 커서
 <HangulMotion text="특별한 커서" cursorChar="●" />

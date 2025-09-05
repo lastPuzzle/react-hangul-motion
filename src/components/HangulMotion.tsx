@@ -55,7 +55,12 @@ export const HangulMotion = forwardRef<HangulMotionRef, HangulMotionProps>(
     const hasStartedRef = useRef(false);
 
     useEffect(() => {
-      if (autoStart && processedText && !hasStartedRef.current) {
+      if (
+        autoStart &&
+        processedText &&
+        !hasStartedRef.current &&
+        !motion.isComplete
+      ) {
         hasStartedRef.current = true;
         motion.start();
       }

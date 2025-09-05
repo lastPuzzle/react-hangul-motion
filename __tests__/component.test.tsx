@@ -53,4 +53,12 @@ describe("한글모션 컴포넌트 테스트", () => {
     const br요소들 = container.querySelectorAll("br");
     expect(br요소들).toHaveLength(2);
   });
+
+  test("skipAnimation 옵션으로 애니메이션 없이 바로 표시", () => {
+    const { container } = render(
+      <HangulMotion text="안녕하세요" skipAnimation={true} autoStart={true} />
+    );
+    const 요소 = container.querySelector("span");
+    expect(요소?.textContent).toBe("안녕하세요|");
+  });
 });
